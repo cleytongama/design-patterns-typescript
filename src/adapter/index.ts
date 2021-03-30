@@ -1,12 +1,26 @@
 import { EmailValidatorAdpater } from './emailvalidator-adapter';
 import { IEmailValidatorProtocol } from "./emailvalidator";
 
-function validaEmail(emailValidator:IEmailValidatorProtocol, email: string){
-    if(emailValidator.isEmail(email)){
-        console.log("é email")
-    }else{
-        console.log("não é email")
+
+class Email {
+    private validate: IEmailValidatorProtocol;
+
+    constructor (emailValidator : IEmailValidatorProtocol){
+        this.validate = emailValidator;
+    }
+
+    validaeEmail(email: string){
+        if(this.validate.isEmail(email)){
+            console.log("é email")
+        }else{
+            console.log("não é email")
+        }
     }
 }
 
-validaEmail(new EmailValidatorAdpater(), 'cleytongama@gmail.com') 
+
+const email = new Email(new EmailValidatorAdpater())
+
+
+email.validaeEmail("cleytongama@gmail.com")
+
